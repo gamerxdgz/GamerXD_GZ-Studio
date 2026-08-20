@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GamerXD_GZ Studio</title>
+
+    <meta
+        name="description"
+        content="GamerXD_GZ Studio - Create, edit, preview, save, import, and download web projects."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a href="#" class="brand">
+        <div class="brand-mark">G</div>
+
+        <div class="brand-text">
+            <strong>GamerXD_GZ Studio</strong>
+            <span>Web Development Studio</span>
+        </div>
+    </a>
+
+    <div class="top-actions">
+        <button id="newProjectBtn">New Project</button>
+        <button id="importBtn">Import</button>
+        <button id="downloadBtn" class="primary">Download</button>
+    </div>
+
+</header>
+
+
+<main class="app">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <span>PROJECT</span>
+
+            <button
+                id="addFileBtn"
+                title="Create new file"
+                aria-label="Create new file"
+            >
+                +
+            </button>
+        </div>
+
+        <div class="project-name">
+            <input
+                id="projectName"
+                type="text"
+                value="My Project"
+                maxlength="80"
+                aria-label="Project name"
+            >
+        </div>
+
+        <div id="fileList" class="file-list"></div>
+
+        <div class="sidebar-bottom">
+            <button id="renameFileBtn">Rename File</button>
+            <button id="downloadFileBtn">Download File</button>
+            <button id="deleteFileBtn" class="danger">Delete File</button>
+            <button id="deleteProjectBtn" class="danger">
+                Delete Project
+            </button>
+        </div>
+
+    </aside>
+
+
+    <section class="workspace">
+
+        <div class="editor-toolbar">
+
+            <div class="file-info">
+                <span id="currentFile">index.html</span>
+                <span id="lineCount">0 lines</span>
+            </div>
+
+            <div class="editor-actions">
+                <button id="undoBtn">Undo</button>
+                <button id="redoBtn">Redo</button>
+                <button id="saveBtn">Save</button>
+                <button id="runBtn" class="primary">Run</button>
+            </div>
+
+        </div>
+
+
+        <div class="editor-area">
+
+            <div id="lineNumbers" class="line-numbers"></div>
+
+            <textarea
+                id="codeEditor"
+                spellcheck="false"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                aria-label="Code editor"
+            ></textarea>
+
+        </div>
+
+
+        <div class="statusbar">
+
+            <span id="saveStatus">
+                Ready
+            </span>
+
+            <span id="limitsStatus">
+                0 / 20 files
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <section class="preview-panel">
+
+        <div class="preview-header">
+
+            <span>LIVE PREVIEW</span>
+
+            <button id="refreshPreviewBtn">
+                Refresh
+            </button>
+
+        </div>
+
+        <iframe
+            id="preview"
+            title="Project live preview"
+            sandbox="allow-scripts allow-forms allow-modals"
+        ></iframe>
+
+    </section>
+
+</main>
+
+
+<input
+    id="fileInput"
+    type="file"
+    accept=".zip"
+    hidden
+>
+
+
+<div
+    id="modal"
+    class="modal hidden"
+    aria-hidden="true"
+>
+
+    <div class="modal-card">
+
+        <h2 id="modalTitle">Create File</h2>
+
+        <p id="modalDescription">
+            Enter a name.
+        </p>
+
+        <input
+            id="modalInput"
+            type="text"
+            maxlength="100"
+            autocomplete="off"
+        >
+
+        <div class="modal-actions">
+
+            <button id="modalCancel">
+                Cancel
+            </button>
+
+            <button
+                id="modalConfirm"
+                class="primary"
+            >
+                Confirm
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    id="toastContainer"
+    class="toast-container"
+></div>
+
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
